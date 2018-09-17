@@ -13,6 +13,9 @@ set tabstop=4
 " Share clipboard
 set clipboard+=unnamed
 
+" Paste without yanking it
+vnoremap <leader>p "0dP
+
 " Searching
 set hlsearch
 set incsearch
