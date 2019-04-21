@@ -4,14 +4,14 @@ set number
 " Encoding
 set encoding=utf-8
 
-" Stay cursor in the middle
+" Cursor middle
 set scrolloff=10
 
 " Tab size
 set tabstop=4
 
-" Share clipboard
-set clipboard+=unnamed
+" Backspacing is allowed over everything in insert mode
+set backspace=indent,eol,start
 
 " Paste without yanking it
 vnoremap <leader>p "0dP
