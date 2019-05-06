@@ -1,20 +1,11 @@
-" Show line numbers
-set number
+" Display
+syntax on
+set number " Show line numbers
+set scrolloff=10 " Cursor middle
 
-" Encoding
-set encoding=utf-8
-
-" Cursor middle
-set scrolloff=10
-
-" Tab size
-set tabstop=4
-
-" Backspacing is allowed over everything in insert mode
-set backspace=indent,eol,start
-
-" Paste without yanking it
-vnoremap <leader>p "0dP
+" Editing
+set backspace=indent,eol,start " Backspacing is allowed over everything in insert mode
+set tabstop=4 " Tab size
 
 " Searching
 set hlsearch
@@ -23,4 +14,7 @@ set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
+
+" Encoding
+set encoding=utf-8
 
