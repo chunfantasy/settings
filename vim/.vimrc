@@ -5,7 +5,8 @@ set scrolloff=10 " Cursor middle
 
 " Editing
 set backspace=indent,eol,start " Backspacing is allowed over everything in insert mode
-set tabstop=4 " Tab size
+set tabstop=2 " Tab size
+set shiftwidth=2 " Shift width
 
 " Searching
 set hlsearch
