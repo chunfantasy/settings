@@ -1,5 +1,13 @@
-# Support vim
-ideavim
+# Editor
+IdeaVim
+CodeGlance
 
-# Side scroll bar
-codeglance
+# Theme
+Material Theme UI
+One Dark Theme
+
+# JavaScript
+JS GraphQL
+
+# Kotlin
+Kotlin
