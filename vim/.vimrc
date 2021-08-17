@@ -29,3 +29,6 @@ map <leader><space> :let @/=''<cr> " clear search
 " Encoding
 set encoding=utf-8
 
+" Key map
+imap jj <Esc>
+
