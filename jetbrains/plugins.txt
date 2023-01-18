@@ -3,6 +3,7 @@ IdeaVim
 CodeGlance
 
 # Theme
+Atom Material Icons
 Material Theme UI
 One Dark Theme
 
