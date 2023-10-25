@@ -1,8 +1,8 @@
 -- print('NeoVim initializing')
--- require("plugins")
 
-require("lazy-loader")
 require("settings")
+require("keymaps")
+require("lazy-loader")
 
 -- require("themes_rc")
 -- require("bufferline_rc")
