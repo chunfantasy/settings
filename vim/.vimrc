@@ -10,7 +10,7 @@ call plug#end()
 
 " Display
 syntax on
-set number " show line numbers
+set nu rnu " show line numbers
 set scrolloff=6 " cursor middle
 
 " Editing
