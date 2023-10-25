@@ -2,6 +2,7 @@
 -- require("plugins")
 
 require("lazy-loader")
+require("settings")
 
 -- require("themes_rc")
 -- require("bufferline_rc")

@@ -8,13 +8,25 @@ Plug 'mg979/vim-visual-multi'
 
 call plug#end()
 
+" Encoding
+set encoding=utf-8
+scriptencoding utf-8
+
 " Display
 syntax on
-set nu rnu " show line numbers
-set scrolloff=6 " cursor middle
+set number " show line numbers
+set relativenumber " show relative line numbers
+set scrolloff=2 " cursor middle
+set list
+set listchars=space:·,tab:»·
+" set listchars=space:·tab:»·eol:↴
+set colorcolumn = "80,100,120"
+set eol
+set eof
 
 " Editing
 set backspace=indent,eol,start " Backspacing is allowed over everything in insert mode
+set expandtab
 set tabstop=2 " Tab size
 set shiftwidth=2 " shift width
 " set clipboard=unnamedplus " Use system clipboard by default
@@ -26,9 +38,6 @@ set ignorecase
 set smartcase
 set showmatch
 map <leader><space> :let @/=''<cr> " clear search
-
-" Encoding
-set encoding=utf-8
 
 " Key map
 imap jj <Esc>
