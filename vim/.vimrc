@@ -37,8 +37,10 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
 
 " Key map
+let mapleader = " "
+let maplocalleader = " "
+map <leader><space> :let @/=''<cr> " clear search
 imap jj <Esc>
 
