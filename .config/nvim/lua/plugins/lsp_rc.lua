@@ -1,65 +1,102 @@
 return {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-        "williamboman/mason-lspconfig.nvim",
-        { "williamboman/mason.nvim", build = ":MasonUpdate" },
-        "hrsh7th/cmp-nvim-lsp",
-    },
-    opts = {
-        servers = {
-            tsserver = {},
-            cssmodules_ls = {},
-            cssls = {},
-            lua_ls = {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim", "require" },
-                        },
-                        -- Do not send telemetry data containing a randomized but unique identifier
-                        telemetry = {
-                          enable = false,
-                        },
-                    },
-                },
+  "neovim/nvim-lspconfig",
+  dependencies = {
+    "williamboman/mason-lspconfig.nvim",
+    { "williamboman/mason.nvim", build = ":MasonUpdate" },
+    "hrsh7th/cmp-nvim-lsp",
+  },
+  event = { "VeryLazy", "BufReadPre", "BufNewFile" },
+  opts = {
+    servers = {
+      tsserver = {},
+      cssmodules_ls = {},
+      cssls = {},
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim", "require" },
             },
-            html = {},
-            yamlls = {},
-            tailwindcss = {},
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+              enable = false,
+            },
+          },
         },
+      },
+      html = {},
+      yamlls = {},
+      tailwindcss = {},
     },
-    event = { "VeryLazy", "BufReadPre", "BufNewFile" },
-    config = function(_, opts)
-        require("mason").setup({
-            ui = {
-                border = "rounded",
-            },
-        })
+  },
+  config = function(_, opts)
+    require("mason").setup({
+      ui = {
+        border = "rounded",
+      },
+    })
 
-        local lspconfig = require("lspconfig")
-        local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-        local capabilities = vim.tbl_deep_extend(
-          "force",
-          vim.lsp.protocol.make_client_capabilities(),
-          has_cmp and cmp_nvim_lsp.default_capabilities() or {}
-        )
+    local lspconfig = require("lspconfig")
+    local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+    local capabilities = vim.tbl_deep_extend(
+      "force",
+      vim.lsp.protocol.make_client_capabilities(),
+      has_cmp and cmp_nvim_lsp.default_capabilities() or {}
+    )
 
-        local ensure_installed = {}
-        for server, _ in pairs(opts.servers) do
-            ensure_installed[#ensure_installed + 1] = server
-        end
+    local ensure_installed = {}
+    for server, _ in pairs(opts.servers) do
+      ensure_installed[#ensure_installed + 1] = server
+    end
 
-        local function setup(server)
-            local server_opts = vim.tbl_deep_extend("force", {
-                capabilities = vim.deepcopy(capabilities),
-            }, opts.servers[server] or {})
+    local function setup(server)
+      local server_opts = vim.tbl_deep_extend("force", {
+        capabilities = vim.deepcopy(capabilities),
+      }, opts.servers[server] or {})
 
-            lspconfig[server].setup(server_opts)
-        end
+      lspconfig[server].setup(server_opts)
+    end
 
-        require("mason-lspconfig").setup({
-            ensure_installed = ensure_installed,
-            handlers = { setup },
-        })
-    end,
+    require("mason-lspconfig").setup({
+      ensure_installed = ensure_installed,
+      handlers = { setup },
+    })
+    -- Global mappings.
+    -- See `:help vim.diagnostic.*` for documentation on any of the below functions
+    vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
+    vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
+
+    -- Use LspAttach autocommand to only map the following keys
+    -- after the language server attaches to the current buffer
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+      callback = function(ev)
+        -- Enable completion triggered by <c-x><c-o>
+        vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+        -- Buffer local mappings.
+        -- See `:help vim.lsp.*` for documentation on any of the below functions
+        local opts = { buffer = ev.buf }
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+        vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+        vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+        vim.keymap.set('n', '<space>wl', function()
+          print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        end, opts)
+        vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+        vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+        vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<space>f', function()
+          vim.lsp.buf.format { async = true }
+        end, opts)
+      end,
+    })
+  end,
 }
