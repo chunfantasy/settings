@@ -3,7 +3,8 @@ return {
   dependencies = {
     "nvim-tree/nvim-web-devicons",
   },
-  config = function ()
+  lazy = false,
+  config = function()
     vim.opt.termguicolors = true
     require("bufferline").setup({
       highlights = {

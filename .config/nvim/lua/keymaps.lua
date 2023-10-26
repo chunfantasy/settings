@@ -10,9 +10,10 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- Toggle file explorer
-vim.keymap.set("n", "<leader>e", ":NvimTreeOpen<cr>", {
-  noremap = true,
-})
+-- vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", {
+--  noremap = true,
+-- })
+vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", {})
 
 -- Clear search
 vim.keymap.set("n", "<leader><space>", ":let @/=''<cr>")
