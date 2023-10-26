@@ -16,13 +16,13 @@ scriptencoding utf-8
 syntax on
 set number " show line numbers
 set relativenumber " show relative line numbers
+set nowrap
 set scrolloff=2 " cursor middle
 set list
 set listchars=space:·,tab:»·
-" set listchars=space:·tab:»·eol:↴
-set colorcolumn = "80,100,120"
+" set listchars=space:·,tab:»·,eol:↴
+set colorcolumn=80,100,120
 set eol
-set eof
 
 " Editing
 set backspace=indent,eol,start " Backspacing is allowed over everything in insert mode
