@@ -37,12 +37,12 @@ return {
           if context.buffer:current() then
             return ""
           end
-          -- if level:match("error") then
-          --   return " " .. vim.g.diagnostic_icons.Error
-          -- elseif level:match("warning") then
-          --   return " " .. vim.g.diagnostic_icons.Warning
-          -- end
-          -- return ""
+          if level:match("error") then
+            return " " .. vim.g.diagnostic_icons.Error
+          elseif level:match("warning") then
+            return " " .. vim.g.diagnostic_icons.Warning
+          end
+          return ""
         end,
         custom_filter = function(buf_number, buf_numbers)
           if vim.bo[buf_number].filetype ~= "oil" then
@@ -51,13 +51,5 @@ return {
         end,
       },
     })
-
-    vim.keymap.set("n", "gb", "<CMD>BufferLinePick<CR>")
-    vim.keymap.set("n", "<leader>ts", "<CMD>BufferLinePickClose<CR>")
-    vim.keymap.set("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>")
-    vim.keymap.set("n", "<S-h>", "<CMD>BufferLineCyclePrev<CR>")
-    vim.keymap.set("n", "]b", "<CMD>BufferLineMoveNext<CR>")
-    vim.keymap.set("n", "[b", "<CMD>BufferLineMovePrev<CR>")
-    vim.keymap.set("n", "gs", "<CMD>BufferLineSortByDirectory<CR>")
   end
 }
