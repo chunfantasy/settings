@@ -38,9 +38,9 @@ return {
             return ""
           end
           if level:match("error") then
-            return " " .. vim.g.diagnostic_icons.Error
+            return " " -- vim.g.diagnostic_icons.Error
           elseif level:match("warning") then
-            return " " .. vim.g.diagnostic_icons.Warning
+            return " " -- vim.g.diagnostic_icons.Warning
           end
           return ""
         end,
