@@ -10,13 +10,22 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- Toggle file explorer
-vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<cr>", {
+vim.keymap.set("n", "<leader>ee", ":NvimTreeOpen<cr>", {
+  noremap = true,
+})
+vim.keymap.set("n", "<leader>ex", ":NvimTreeClose<cr>", {
   noremap = true,
 })
 
+-- Bufferline
 vim.keymap.set("n", "H", ":BufferLineCyclePrev<cr>", {
   noremap = true,
 })
 vim.keymap.set("n", "L", ":BufferLineCycleNext<cr>", {
+  noremap = true,
+})
+
+-- Lazygit
+vim.keymap.set("n", "<leader>gg", ":LazyGit<cr>", {
   noremap = true,
 })

@@ -19,7 +19,7 @@ return {
   {
     -- Status line
     'nvim-lualine/lualine.nvim',
-    lazy = false,
+    event = "VeryLazy",
     opts = {
       options = {
         icons_enabled = false,
@@ -37,7 +37,7 @@ return {
   {
     -- Indent line
     "lukas-reineke/indent-blankline.nvim",
-    lazy = false,
+    event = "VeryLazy",
     main = "ibl",
     opts = {},
     config = function()
