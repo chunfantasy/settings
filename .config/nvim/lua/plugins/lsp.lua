@@ -74,7 +74,7 @@ return {
 
         -- Buffer local mappings.
         -- See `:help vim.lsp.*` for documentation on any of the below functions
-        -- local local_opts = { buffer = ev.buf }
+        local local_opts = { buffer = ev.buf }
         -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, local_opts)
         -- vim.keymap.set('n', 'gd', vim.lsp.buf.definition, local_opts)
         -- vim.keymap.set('n', 'K', vim.lsp.buf.hover, local_opts)
@@ -92,6 +92,12 @@ return {
         vim.keymap.set('n', 'ff', function()
           vim.lsp.buf.format { async = true }
         end, local_opts)
+        vim.api.nvim_create_autocmd("BufWritePre", {
+          pattern = { "*.lua" },
+          callback = function()
+            vim.lsp.buf.format { async = true }
+          end
+        })
       end,
     })
 
