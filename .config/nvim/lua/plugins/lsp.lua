@@ -13,6 +13,11 @@ return {
       cssls = {},
       html = {},
       tailwindcss = {},
+      kotlin_language_server = {
+        on_attach = on_attach,
+        flags = lsp_flags,
+        capabilities = capabilities,
+      },
       lua_ls = {
         settings = {
           Lua = {

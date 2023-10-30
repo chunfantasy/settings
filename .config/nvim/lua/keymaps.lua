@@ -29,3 +29,8 @@ vim.keymap.set("n", "L", ":BufferLineCycleNext<cr>", {
 vim.keymap.set("n", "<leader>gg", ":LazyGit<cr>", {
   noremap = true,
 })
+
+-- Symbols outline
+vim.keymap.set("n", "<leader>so", ":SymbolsOutline<cr>", {
+  noremap = true,
+})
