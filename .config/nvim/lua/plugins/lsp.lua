@@ -13,21 +13,6 @@ return {
       cssls = {},
       html = {},
       tailwindcss = {},
-      kotlin_language_server = {},
-      java_language_server = {},
-      yamlls = {
-        settings = {
-          yaml = {
-            format = {
-              enable = true,
-              singleQuote = false,
-              bracketSpacing = true
-            },
-            validate = true,
-            completion = true
-          }
-        }
-      },
       lua_ls = {
         settings = {
           Lua = {
@@ -105,7 +90,7 @@ return {
         vim.api.nvim_create_autocmd("BufWritePre", {
           pattern = { "*.lua" },
           callback = function()
-            vim.lsp.buf.format { async = true }
+            vim.lsp.buf.format { async = false }
           end
         })
       end,
