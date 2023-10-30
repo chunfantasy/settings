@@ -21,7 +21,7 @@ set scrolloff=2 " cursor middle
 set list
 set listchars=space:·,tab:»·
 " set listchars=space:·,tab:»·,eol:↴
-set colorcolumn=80,100,120
+set colorcolumn=100,120
 set eol
 
 " Editing

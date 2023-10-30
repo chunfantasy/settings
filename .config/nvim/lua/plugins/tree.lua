@@ -24,6 +24,10 @@ return {
       },
       filters = {
         -- dotfiles = true,
+        exclude = {
+          "node_modules",
+
+        }
       },
     })
   end,

@@ -11,6 +11,23 @@ return {
       tsserver = {},
       cssmodules_ls = {},
       cssls = {},
+      html = {},
+      tailwindcss = {},
+      kotlin_language_server = {},
+      java_language_server = {},
+      yamlls = {
+        settings = {
+          yaml = {
+            format = {
+              enable = true,
+              singleQuote = false,
+              bracketSpacing = true
+            },
+            validate = true,
+            completion = true
+          }
+        }
+      },
       lua_ls = {
         settings = {
           Lua = {
@@ -24,17 +41,10 @@ return {
           },
         },
       },
-      html = {},
-      yamlls = {},
-      tailwindcss = {},
     },
   },
   config = function(_, options)
-    require("mason").setup({
-      ui = {
-        border = "rounded",
-      },
-    })
+    require("mason").setup()
 
     local lspconfig = require("lspconfig")
     local has_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
