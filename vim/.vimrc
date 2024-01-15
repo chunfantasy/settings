@@ -5,7 +5,7 @@ call plug#begin('~/.vim/plugged')
 " Initialize plugin system
 Plug 'tpope/vim-surround'
 Plug 'mg979/vim-visual-multi'
-" Plug 'easymotion/vim-easymotion'
+Plug 'easymotion/vim-easymotion'
 
 call plug#end()
 
@@ -40,6 +40,7 @@ set smartcase
 set showmatch
 
 " Key map
+nnoremap <SPACE> <Nop>
 let mapleader = " "
 let maplocalleader = " "
 map <leader><space> :let @/=''<cr> " clear search

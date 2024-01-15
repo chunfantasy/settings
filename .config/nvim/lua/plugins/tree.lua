@@ -26,7 +26,7 @@ return {
         -- dotfiles = true,
         exclude = {
           "node_modules",
-
+          "public",
         }
       },
     })
